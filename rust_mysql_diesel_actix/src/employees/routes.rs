@@ -21,4 +21,24 @@ async fn create(employee: web::Json<Employee>)->Result<HttpRespose,CustomError>{
     Ok(HttpRespose::Ok().json(employee))
 }
 
+#[put("/employees/{id}")]
+async fn update(id: web::Path<i32>,employee:web::Json<Employee>)->Result<HttpResponse,CustomeError>{
+    let employee = Employees::update(id.into_inner(),employee.into_inner())?;
+    Ok(HttpResponse::Ok().json(employee))
+}
+
+#[delete("/employees/{id}")]
+async fn delete(id: web::Path<i32>)->Result<HttpResponse,CustomeError>{
+    let deleted_employee = Employees::delete(id.into_inner())?;
+    OK(HttpResponse::Ok().json(json!("deleted:":deleted_employee)))
+}
+
+pub fn init_routes(config: &mut web::ServiceConfig){
+    config.service(find_all);
+    config.service(find);
+    config.service(create);
+    config.service(update);
+    config.service(delete);
+}
+
 
