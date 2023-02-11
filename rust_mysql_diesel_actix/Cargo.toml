@@ -11,6 +11,7 @@ actix-rt="1.0"
 chrono={version="0.4", features=["serde"]}
 diesel={version="1.4",features=["postgres","r2d2","uuid","chrono"]}
 diesel_migrations = "1.4.0"
+dotenv = "0.15.0"
 env_logger="0.6"
 lazy_static="1.4"
 listenfd="0.3"

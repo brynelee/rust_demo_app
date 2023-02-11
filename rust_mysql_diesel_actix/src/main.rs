@@ -15,7 +15,7 @@ mod db;
 mod employees;
 
 #[actix_rt::main]
-fn main() ->std::io::Result<()>{
+async fn main() ->std::io::Result<()>{
     dotenv().ok();
     db::init();
 
