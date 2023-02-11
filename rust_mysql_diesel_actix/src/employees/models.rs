@@ -25,19 +25,19 @@ pub struct Employees{
 
 impl Employees{
     pub fn find_all()->Result<Vec<self>, CustomError>{
-        let connn = db::connection()?;
+        let conn = db::connection()?;
         let employees = employees::table.load::<Employees>(&conn)?;
         Ok(employees)
     }
 
     pub fn find(id:i32)->Result<Self,CustomError>{
-        let conn = db:connection()?;
+        let conn = db::connection()?;
         let employee = employees::table.filter(employees::id.eq(id).first(&conn))?;
         Ok(employee)
     }
 
     pub fn create(employee:Employee)->Result<Self,CustomError>{
-        let conn = db:connection()?;
+        let conn = db::connection()?;
         let employee = Employee::from(employee);
         let employee = diesel::insert_into(employee::table)
             .values(employee).get_result(&conn)?;
