@@ -1,7 +1,7 @@
 # rust_demo_app
-Rust Demo Application
+Rust Demo Application of RESTful API service with PostgreSQL as backend
 
-## 技术栈
+## stack used
 
 ## Rust
 ## PostgresQL
